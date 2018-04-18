@@ -1,9 +1,9 @@
 # Hackerbay React Mario Bros.
 
 ## Intro
-Toad is on a rampage and he is causing a nuisance everywhere. It is up to Mario to call him to order. Can you restore order in record time? Are you up for a challenge?
+Toad is on a rampage and he is causing a nuisance everywhere. It is up to Mario to call him to order. Can you restore order in record time? Are you up for a challenge?  
 
-The project is hosted [here](https://longyarnz.github.io) on Github.
+Click [__HERE__](https://longyarnz.github.io/mario/index.html) to save the day.
 
 ## How To Use
 Open the terminal in the project folder and run:
