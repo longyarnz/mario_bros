@@ -1,0 +1,17 @@
+div.rows{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #a9a9a9;
+  border-bottom: none;
+  border-right: none;
+  transition: all .35s ease;
+  
+  &:first-of-type{
+    margin-top: 20px;
+  }
+
+  &:last-of-type{
+    border-bottom: 1px solid #a9a9a9;
+  }
+}
