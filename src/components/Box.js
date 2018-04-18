@@ -4,16 +4,24 @@ import mario_crop from '../files/mario-crop.jpg';
 import mario_win from '../files/mario-win.jpg';
 import toad from '../files/toad-blue.jpg';
 
+/**
+ * @class Box
+ * @extends ReactComponent
+ * @description Renders boxes on the game board.
+ */
 export default class Box extends Component {
   constructor(props) {
     super(props)
     this.BoxView = this.BoxView.bind(this);
     this.RenderIfGameIsWon = this.RenderIfGameIsWon.bind(this);
-    this.state = {
-       
-    }
   }
 
+  /**
+   * @method BoxView
+   * @param {React.Props} boxProps 
+   * @description Renders a Mario image or blank space as view on a Box component.
+   * @return {HTMLElement|null} Image or null.
+   */
   BoxView(boxProps){
     const { toadBoxIndex, thisIsLastIndex } = boxProps;
     const { boardIndex, data } = this.props;
@@ -32,6 +40,12 @@ export default class Box extends Component {
     else return null;      
   }
   
+  /**
+   * @method RenderIfGameIsWon
+   * @param {React.Props} 
+   * @description Renders a Mario image when the game is won.
+   * @return {HTMLElement|null} Image or null.
+   */
   RenderIfGameIsWon({ check }){
     const { boardIndex, data } = this.props;
     const { marioBox } = data;

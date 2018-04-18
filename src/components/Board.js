@@ -3,14 +3,17 @@ import { ForLoop } from './Utils';
 import Row from './Row';
 import mario_win from "../files/mario-win.jpg";
 
+/**
+ * @class Board
+ * @extends React.Component
+ * @description Board component of the game. It renders the game board.
+ */
 export default class Board extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-       
-    }
-  }
-  
+  /**
+   * @method GamePanel
+   * @param {React.Props}
+   * @description React component that renders a game panel for number of moves and points scored.
+   */
   GamePanel({ data }){
     const { numberOfToads, movesList, toadBoxes, gameIsWon } = data;
     const score = (numberOfToads - toadBoxes.length) * 5;
@@ -28,6 +31,12 @@ export default class Board extends Component {
     ) : null;
   }
 
+  /**
+   * @method GamePlay
+   * @param {React.Props}
+   * @description React component that renders a game board with boxes, toads and mario.
+   * @return {ReactComponent} A ForLoop component that renders Row components.
+   */
   GamePlay({ data }){
     return !data.gameIsWon ? (
       <main>
@@ -45,6 +54,11 @@ export default class Board extends Component {
     ) : null;
   }
 
+  /**
+   * @method GamePanel
+   * @param {React.Props}
+   * @description React component that renders a game panel for number of moves played and points scored.
+   */
   ScoreBoard({ data }){
     const { numberOfToads, toadBoxes, movesList, time, gameIsWon } = data;
     const score = (numberOfToads - toadBoxes.length) * 5;

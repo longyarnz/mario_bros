@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import { ForLoop } from './Utils';
+import Row from './Row';
+import mario_win from "../files/mario-win.jpg";
+
+/**
+ * @class Board
+ * @extends React.Component
+ * @description Board component of the game. It renders the game board.
+ */
+export default class Board extends Component {
+  /**
+   * @method GamePanel
+   * @param {React.Props}
+   * @description React component that renders a game panel for number of moves and points scored.
+   */
+  GamePanel({ data }){
+    const { numberOfToads, movesList, toadBoxes, gameIsWon } = data;
+    const score = (numberOfToads - toadBoxes.length) * 5;
+    return !gameIsWon ? (
+      &lt;header>
+        &lt;div>
+          &lt;span>moves:&lt;/span>
+          &lt;span>{movesList.length}&lt;/span>
+        &lt;/div>
+        &lt;div>
+          &lt;span>pts:&lt;/span>
+          &lt;span>{score}&lt;/span>
+        &lt;/div>
+      &lt;/header>
+    ) : null;
+  }
+
+  /**
+   * @method GamePlay
+   * @param {React.Props}
+   * @description React component that renders a game board with boxes, toads and mario.
+   * @return {ReactComponent} A ForLoop component that renders Row components.
+   */
+  GamePlay({ data }){
+    return !data.gameIsWon ? (
+      &lt;main>
+        &lt;ForLoop 
+          times={data.rows}
+          loopView={i => (
+            &lt;Row 
+              key={`row ${i}`}
+              rowIndex={i}
+              data={data}
+            />
+          )}
+        />
+      &lt;/main>
+    ) : null;
+  }
+
+  /**
+   * @method GamePanel
+   * @param {React.Props}
+   * @description React component that renders a game panel for number of moves played and points scored.
+   */
+  ScoreBoard({ data }){
+    const { numberOfToads, toadBoxes, movesList, time, gameIsWon } = data;
+    const score = (numberOfToads - toadBoxes.length) * 5;
+    return gameIsWon ? (
+      &lt;main>
+        &lt;img src={mario_win} alt="Mario Jubilating" />
+        &lt;div className="score-board">
+          &lt;div>
+            &lt;h3>moves:&lt;/h3>
+            &lt;span>{movesList.length}&lt;/span>
+          &lt;/div>
+          &lt;div>
+            &lt;h3>pts:&lt;/h3>
+            &lt;span>{score}&lt;/span>
+          &lt;/div>
+          &lt;div>
+            &lt;h3>time:&lt;/h3>
+            &lt;span>{time}s&lt;/span>
+          &lt;/div>
+        &lt;/div>
+      &lt;/main>
+    ) : null;
+  }
+
+  render() {
+    const { GamePanel, GamePlay, ScoreBoard } = this;
+    const { data } = this.props;
+    const caption = data.isGameWon ? "You have won" : "Board";
+    return (
+      &lt;section className="board">
+        &lt;h2>{caption}&lt;/h2>
+        &lt;GamePanel data={data} />
+        &lt;GamePlay data={data} />
+        &lt;ScoreBoard data={data} />
+      &lt;/section>
+    )
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Board.html">Board</a></li><li><a href="Box.html">Box</a></li><li><a href="GameTab.html">GameTab</a></li><li><a href="Row.html">Row</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BoxView">BoxView</a></li><li><a href="global.html#clock">clock</a></li><li><a href="global.html#componentDidUpdate">componentDidUpdate</a></li><li><a href="global.html#createBox">createBox</a></li><li><a href="global.html#CreateToadBoxes">CreateToadBoxes</a></li><li><a href="global.html#evaluateMarioPosition">evaluateMarioPosition</a></li><li><a href="global.html#FlatList">FlatList</a></li><li><a href="global.html#ForLoop">ForLoop</a></li><li><a href="global.html#GamePanel">GamePanel</a></li><li><a href="global.html#GamePlay">GamePlay</a></li><li><a href="global.html#handleKeyPress">handleKeyPress</a></li><li><a href="global.html#InputBox">InputBox</a></li><li><a href="global.html#letChildrenSetState">letChildrenSetState</a></li><li><a href="global.html#RenderIfGameIsWon">RenderIfGameIsWon</a></li><li><a href="global.html#restartGame">restartGame</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#updateGameBoard">updateGameBoard</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 18:20:38 GMT+0100 (W. Central Africa Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
