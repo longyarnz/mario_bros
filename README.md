@@ -16,7 +16,12 @@ or run yarn
 ```
 The dependies will be installed on your local machine.  
 
-Start the game with:
+Start the game in production mode with:
+```sh
+  npm serve
+```
+
+Start the game in development mode with:
 ```sh
   npm start
 ```
